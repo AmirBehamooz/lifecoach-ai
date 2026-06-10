@@ -74,8 +74,8 @@ Please give me my personal observation and a full plan for the rest of my day.`
                   key={option}
                   onClick={() => setSleepQuality(option)}
                   className={`flex-1 py-2 rounded-lg text-sm capitalize ${sleepQuality === option
-                      ? 'bg-green-500 text-white'
-                      : 'bg-gray-100 text-gray-600'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-100 text-gray-600'
                     }`}
                 >
                   {option}
@@ -93,8 +93,8 @@ Please give me my personal observation and a full plan for the rest of my day.`
                   key={option}
                   onClick={() => setEnergy(option)}
                   className={`flex-1 py-2 rounded-lg text-sm capitalize ${energy === option
-                      ? 'bg-green-500 text-white'
-                      : 'bg-gray-100 text-gray-600'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gray-100 text-gray-600'
                     }`}
                 >
                   {option}
@@ -163,13 +163,35 @@ Please give me my personal observation and a full plan for the rest of my day.`
 
         {/* AI recommendation */}
         {messages.filter(m => m.role === 'assistant').map(message => (
-          <div key={message.id} className="bg-white rounded-2xl shadow p-6">
-            <h2 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-              🌱 Your plan for today
-            </h2>
-            <div className="text-sm text-gray-700 leading-relaxed prose prose-sm max-w-none">
-              <ReactMarkdown>{message.content}</ReactMarkdown>
+          <div key={message.id} className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+
+            {/* card header */}
+            <div className="bg-gradient-to-r from-green-500 to-emerald-500 px-6 py-5">
+              <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                🌱 Your plan for today
+              </h2>
+              <p className="text-green-50 text-sm mt-1">
+                Personalized just for you
+              </p>
             </div>
+
+            {/* card body with rich typography */}
+            <div className="px-6 py-6">
+              <div className="
+        prose prose-sm max-w-none
+        prose-headings:text-gray-900 prose-headings:font-bold prose-headings:mt-6 prose-headings:mb-3
+        prose-h1:text-xl prose-h2:text-lg prose-h3:text-base
+        prose-p:text-gray-600 prose-p:leading-7 prose-p:my-3
+        prose-strong:text-gray-900 prose-strong:font-semibold
+        prose-ul:my-4 prose-ul:space-y-2
+        prose-li:text-gray-600 prose-li:leading-7
+        prose-li:marker:text-green-500
+        first:prose-headings:mt-0
+      ">
+                <ReactMarkdown>{message.content}</ReactMarkdown>
+              </div>
+            </div>
+
           </div>
         ))}
 
