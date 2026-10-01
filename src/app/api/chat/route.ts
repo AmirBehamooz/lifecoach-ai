@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const { messages } = await request.json()
 
     const result = await streamText({
-        model: google('gemini-2.5-flash'),
+        model: google('gemini-3.5-flash'),
         system: `You are LifeCoach AI, a friendly personal health and wellness coach.
 The user gives you their daily check-in data: sleep hours, sleep quality, energy level, water intake, exercise, and notes.
 Based on this, give them:
@@ -17,5 +17,10 @@ Keep it practical, encouraging, and specific. Use clear sections with headings.`
         messages,
     })
 
-    return result.toDataStreamResponse()
+    return result.toDataStreamResponse({
+        getErrorMessage: error => {
+            console.error(error)
+            return error instanceof Error ? error.message : String(error)
+        },
+    })
 }

@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import { useState } from 'react'
 
 export default function Home() {
-  const { messages, append, isLoading } = useChat()
+  const { messages, append, isLoading, error } = useChat()
 
   // form state
   const [sleepHours, setSleepHours] = useState(7)
@@ -160,6 +160,14 @@ Please give me my personal observation and a full plan for the rest of my day.`
             {isLoading ? 'Thinking...' : 'Get my plan'}
           </button>
         </div>
+
+        {/* error message */}
+        {error && (
+          <div className="bg-red-50 border border-red-200 text-red-700 rounded-2xl p-4 text-sm">
+            <p className="font-medium">Something went wrong. Please try again.</p>
+            <p className="mt-1 text-red-600 break-words">{error.message}</p>
+          </div>
+        )}
 
         {/* AI recommendation */}
         {messages.filter(m => m.role === 'assistant').map(message => (
