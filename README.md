@@ -4,7 +4,7 @@ A personal daily health and wellness coach powered by AI. Users complete a quick
 
 ## Live Demo
 
-https://lifecoach-ai-one.vercel.app
+https://lifecoach.amirbehamooz.com
 
 ## Features
 
