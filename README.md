@@ -26,20 +26,20 @@ https://lifecoach.amirbehamooz.com
 
 Install dependencies:
 
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
-Create a \`.env.local\` file and add your Google API key:
+Create a `.env.local` file and add your Google API key:
 
-\`\`\`
+```
 GOOGLE_GENERATIVE_AI_API_KEY=your-api-key-here
-\`\`\`
+```
 
 Run the development server:
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 Open http://localhost:3000 in your browser.
